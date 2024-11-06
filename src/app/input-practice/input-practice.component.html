@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="input-button-container ">
+        <textarea nz-input placeholder="What you want to say?" [(ngModel)]="inputContext" type="text" ></textarea>
+        <button nz-button nzType="primary" (click)="generateResponse()" [nzLoading]="isLoading">Send</button>
+    </div>
+    <div class="response-container"> 
+        <nz-card nzTitle="Response">
+            <p>{{ responseContent }}</p>
+        </nz-card>
+     </div>
+</div>

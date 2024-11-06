@@ -1,12 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('AppComponent', () => {
+  let httpTestingController:HttpTestingController
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting()
+      ],
       imports: [AppComponent],
     }).compileComponents();
   });
+  httpTestingController = TestBed.inject(HttpTestingController);  
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
