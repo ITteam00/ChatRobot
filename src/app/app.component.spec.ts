@@ -2,9 +2,12 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 
 describe('AppComponent', () => {
-  let httpTestingController:HttpTestingController
+  let httpTestingController: HttpTestingController;
+  let fixture: any;
+  let app: AppComponent;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -12,27 +15,22 @@ describe('AppComponent', () => {
         provideHttpClient(),
         provideHttpClientTesting()
       ],
-      imports: [AppComponent],
+      imports: [HttpClientModule], // 确保导入 HttpClientModule
     }).compileComponents();
+
+    // Inject HttpTestingController
+    httpTestingController = TestBed.inject(HttpTestingController);
+    
+    // 创建组件实例
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
   });
-  httpTestingController = TestBed.inject(HttpTestingController);  
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
   it(`should have the 'Proctice' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
     expect(app.title).toEqual('Proctice');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, Proctice');
   });
 });

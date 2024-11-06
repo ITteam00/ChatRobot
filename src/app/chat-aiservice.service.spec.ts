@@ -24,9 +24,9 @@ describe('ChatAIServiceService', () => {
     httpTestingController.verify();
   });
 
-  it('should fetch todos', () => {
+  it('should create post request', () => {
     service.generateContent("Hello").subscribe();
     const req = httpTestingController.expectOne('/api/v1/services/aigc/text-generation/generation');
-    expect(req.request.method).equal('POST');
+    expect(req.request.method).toEqual('POST');
   });
 });
