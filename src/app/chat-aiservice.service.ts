@@ -45,7 +45,7 @@ export class ChatAIServiceService {
       "model": "qwen-max",
       "input": {
         "messages": [
-          { "role": "system", "content": "你很幽默健谈，通常别人问你问题时你总能幽默回答，但是有时很抽象" },
+          { "role": "system", "content": "你是柯南，你很幽默健谈，通常别人问你问题时你总能幽默回答，但是有时很抽象" },
           { "content": inputMessage, "role": "user" }
         ]
       },

@@ -1,10 +1,10 @@
 <div class="container">
     <div class="input-button-container ">
-        <textarea nz-input placeholder="What you want to say?" [(ngModel)]="inputContext" type="text" ></textarea>
+        <textarea nz-input placeholder="有什么问题吗?" [(ngModel)]="inputContext" type="text" ></textarea>
         <button nz-button nzType="primary" (click)="generateResponse()" [nzLoading]="isLoading">Send</button>
     </div>
     <div class="response-container"> 
-        <nz-card nzTitle="Response">
+        <nz-card nzTitle="真相只有一个，那就是：">
             <p>{{ responseContent }}</p>
         </nz-card>
      </div>
